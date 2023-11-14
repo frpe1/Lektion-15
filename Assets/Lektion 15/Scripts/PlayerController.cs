@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,20 +32,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        customActions.GamePlay.Move.performed += inputValue => MoveInput(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Move.canceled += inputValue => MoveInputUp(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Move.started += inputValue => MoveInputDown(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Jump.started += inputValue => JumpInput(inputValue.action.IsPressed());
-        customActions.GamePlay.Interact.performed += inputValue => InteractInput(inputValue.action.IsPressed());
+        customActions.Gameplay.Move.performed += inputValue => MoveInput(inputValue.ReadValue<Vector2>());
+        customActions.Gameplay.Move.canceled += inputValue => MoveInputUp(inputValue.ReadValue<Vector2>());
+        customActions.Gameplay.Move.started += inputValue => MoveInputDown(inputValue.ReadValue<Vector2>());
+        //customActions.Gameplay.Jump.started += inputValue => JumpInput(inputValue.action.IsPressed());
+        customActions.Gameplay.Interact.performed += inputValue => InteractInput(inputValue.action.IsPressed());
     }
 
     private void OnDisable()
     {
-        customActions.GamePlay.Move.performed -= inputValue => MoveInput(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Move.canceled -= inputValue => MoveInputUp(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Move.started -= inputValue => MoveInputDown(inputValue.ReadValue<Vector2>());
-        customActions.GamePlay.Jump.started -= inputValue => JumpInput(inputValue.action.IsPressed());
-        customActions.GamePlay.Interact.performed -= inputValue => InteractInput(inputValue.action.IsPressed());
+        customActions.Gameplay.Move.performed -= inputValue => MoveInput(inputValue.ReadValue<Vector2>());
+        customActions.Gameplay.Move.canceled -= inputValue => MoveInputUp(inputValue.ReadValue<Vector2>());
+        customActions.Gameplay.Move.started -= inputValue => MoveInputDown(inputValue.ReadValue<Vector2>());
+        customActions.Gameplay.Jump.started -= inputValue => JumpInput(inputValue.action.IsPressed());
+        customActions.Gameplay.Interact.performed -= inputValue => InteractInput(inputValue.action.IsPressed());
     }
 
     // Start is called before the first frame update
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
     private void InteractInput(bool isPressed)
     {
         // kod för att interagera ....
+        Debug.Log("Interacting....");
     }
 
     private void Update()
