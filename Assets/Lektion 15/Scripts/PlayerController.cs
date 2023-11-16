@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpSpeed;
 
+    [SerializeField]
+    private float maxYVelocity = -4f;
+
     private CharacterController cc;
     private Animator anim;
     private XRIDefaultInputActions customActions;
@@ -96,15 +99,19 @@ public class PlayerController : MonoBehaviour
 
         Vector3 velocity = mDirection * speedMagnitude;
 
-        ySpeed += Physics.gravity.y * Time.deltaTime;
-
-        if (cc.isGrounded && isJump)
+        if (cc.isGrounded)
         {
-            ySpeed = jumpSpeed;
-            isJump = false;
+            ySpeed = 0;
+        }
+        else
+        {
+            // Endast tillämpa gravitation om spelaren inte är på marken
+            ySpeed += Physics.gravity.y * Time.deltaTime;
+            // Begränsa hastigheten i y-led till maxYVelocity
+            ySpeed = Mathf.Max(ySpeed, maxYVelocity);
         }
 
-        velocity.y = ySpeed;
+        velocity.y = ySpeed *  Time.deltaTime;
 
         anim.SetFloat("Motion", speedMagnitude);
 

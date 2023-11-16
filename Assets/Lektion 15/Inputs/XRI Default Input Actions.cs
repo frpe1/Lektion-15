@@ -1653,6 +1653,17 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f16942cb-461c-430b-80fa-43f5e76ba8e6"",
+                    ""path"": ""<XRController>{LeftHand}/primary2DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a3bbc487-431c-456c-b9a3-f37375402da7"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
@@ -1745,7 +1756,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""path"": ""<XRController>{RightHand}/primaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Generic XR Controller"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
